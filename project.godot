@@ -13,6 +13,7 @@ config_version=5
 config/name="It Takes Two"
 config/description="My submission for Godot XR Game Jam September 2025"
 config/version="1.0.0"
+run/main_scene="uid://v2ubme14ej7e"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
