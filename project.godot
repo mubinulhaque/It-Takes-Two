@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="It Takes Two"
+config/description="My submission for Godot XR Game Jam September 2025"
+config/version="1.0.0"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -27,6 +29,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 
 [shader_globals]
 
@@ -77,3 +80,4 @@ openxr/enabled=true
 openxr/foveation_level=3
 openxr/foveation_dynamic=true
 shaders/enabled=true
+openxr/extensions/meta/color_space/starting_color_space=3
