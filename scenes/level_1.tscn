@@ -66,6 +66,9 @@ shape = SubResource("BoxShape3D_rus8k")
 [node name="ForwardButton" parent="Console" index="4" instance=ExtResource("2_bswci")]
 transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.4226183, 0, 0.4226183, 0.90630776, 0, 1.27, 0)
 
+[node name="BackwardButton" parent="Console" index="5" instance=ExtResource("2_bswci")]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261833, 0, 0.42261833, 0.90630776, 0, 1.1806064, 0.1945628)
+
 [node name="RobotBluey" type="CharacterBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 script = ExtResource("3_rus8k")
@@ -94,5 +97,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [connection signal="pressed" from="Console/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="released" from="Console/ForwardButton" to="RobotBluey" method="_on_forward_button_released"]
+[connection signal="pressed" from="Console/BackwardButton" to="RobotBluey" method="_on_forward_button_released"]
+[connection signal="released" from="Console/BackwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="body_entered" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_exited"]
