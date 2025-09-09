@@ -41,7 +41,7 @@ radius = 0.05
 script = ExtResource("1_is61r")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019923538, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("CylinderMesh_014kd")
@@ -51,6 +51,7 @@ skeleton = NodePath("../../..")
 shape = SubResource("CylinderShape3D_bswci")
 
 [node name="InteractableAreaButton" parent="." instance=ExtResource("1_mi6dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019923538, 0)
 button = NodePath("../StaticBody3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableAreaButton"]
@@ -62,7 +63,7 @@ event = ExtResource("3_is61r")
 metadata/_custom_type_script = "uid://cvqvx4omkyss4"
 
 [node name="HandPoseArea" parent="." instance=ExtResource("2_rhj8v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029923538, 0)
 left_pose = SubResource("Resource_is61r")
 right_pose = SubResource("Resource_iw4ej")
 

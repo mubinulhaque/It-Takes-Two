@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=12 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_014kd"]
 [ext_resource type="PackedScene" uid="uid://dchiyapfkkey5" path="res://scenes/button.tscn" id="2_bswci"]
@@ -10,17 +10,11 @@ size = Vector2(10, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_014kd"]
 size = Vector3(10, 1, 10)
 
-[sub_resource type="BoxMesh" id="BoxMesh_014kd"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_rus8k"]
+size = Vector2(2, 1)
 
-[sub_resource type="PrismMesh" id="PrismMesh_014kd"]
-left_to_right = 0.0
-size = Vector3(1, 0.5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bswci"]
-size = Vector3(1, 1, 0.8491211)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rus8k"]
-size = Vector3(1, 0.16687012, 0.9786377)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xbjy"]
+size = Vector3(2, 0.1, 0.8)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xbjy"]
 
@@ -44,36 +38,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_014kd")
 
 [node name="Console" type="StaticBody3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-collision_mask = 0
+transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261827, 0, 0.42261827, 0.90630776, 0, 1, -1.5)
 
-[node name="BoxMesh" type="MeshInstance3D" parent="Console" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_014kd")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Console" index="0"]
+mesh = SubResource("PlaneMesh_rus8k")
 
-[node name="PrismMesh" type="MeshInstance3D" parent="Console" index="1"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.25, 0)
-mesh = SubResource("PrismMesh_014kd")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Console" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_5xbjy")
 
-[node name="BoxCollider" type="CollisionShape3D" parent="Console" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.07543945)
-shape = SubResource("BoxShape3D_bswci")
+[node name="BlueyControls" type="Node3D" parent="Console" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
 
-[node name="PrismCollider" type="CollisionShape3D" parent="Console" index="3"]
-transform = Transform3D(1, 0, 0, 0, 0.89493424, -0.44619775, 0, 0.44619775, 0.89493424, 0, 1.2054515, -0.10462201)
-shape = SubResource("BoxShape3D_rus8k")
+[node name="ForwardButton" parent="Console/BlueyControls" index="0" instance=ExtResource("2_bswci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, -0.14999998)
 
-[node name="ForwardButton" parent="Console" index="4" instance=ExtResource("2_bswci")]
-transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.4226183, 0, 0.4226183, 0.90630776, 0, 1.27, 0)
+[node name="BackwardButton" parent="Console/BlueyControls" index="1" instance=ExtResource("2_bswci")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0.14999998)
 
-[node name="BackwardButton" parent="Console" index="5" instance=ExtResource("2_bswci")]
-transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261833, 0, 0.42261833, 0.90630776, 0, 1.1806064, 0.1945628)
+[node name="LeftButton" parent="Console/BlueyControls" index="2" instance=ExtResource("2_bswci")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.15, 0, 0)
 
-[node name="LeftButton" parent="Console" index="6" instance=ExtResource("2_bswci")]
-transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261833, 0, 0.42261833, 0.90630776, -0.15, 1.223, 0.1)
-
-[node name="RightButton" parent="Console" index="7" instance=ExtResource("2_bswci")]
-transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261833, 0, 0.42261833, 0.90630776, 0.15, 1.223, 0.1)
+[node name="RightButton" parent="Console/BlueyControls" index="3" instance=ExtResource("2_bswci")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.15, 0, 0)
 
 [node name="RobotBluey" type="CharacterBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -101,11 +88,11 @@ shape = SubResource("SphereShape3D_pa8r4")
 [node name="GrabTransform" type="RemoteTransform3D" parent="RobotBluey/GrabArea" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
-[connection signal="pressed" from="Console/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
-[connection signal="released" from="Console/ForwardButton" to="RobotBluey" method="_on_forward_button_released"]
-[connection signal="pressed" from="Console/BackwardButton" to="RobotBluey" method="_on_forward_button_released"]
-[connection signal="released" from="Console/BackwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
-[connection signal="pressed" from="Console/LeftButton" to="RobotBluey" method="_on_left_button_pressed"]
-[connection signal="pressed" from="Console/RightButton" to="RobotBluey" method="_on_right_button_pressed"]
+[connection signal="pressed" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
+[connection signal="released" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_released"]
+[connection signal="pressed" from="Console/BlueyControls/BackwardButton" to="RobotBluey" method="_on_forward_button_released"]
+[connection signal="released" from="Console/BlueyControls/BackwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
+[connection signal="pressed" from="Console/BlueyControls/LeftButton" to="RobotBluey" method="_on_left_button_pressed"]
+[connection signal="pressed" from="Console/BlueyControls/RightButton" to="RobotBluey" method="_on_right_button_pressed"]
 [connection signal="body_entered" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_exited"]
