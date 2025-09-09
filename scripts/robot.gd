@@ -7,6 +7,7 @@ const _TURN_SPEED := 5
 
 ## Bodies that can be grabbed by the robot
 var _grabbables: Array[Grabbable]
+var _grabbing := false
 
 @onready var _grab_area: Area3D = $GrabArea
 @onready var _grab_transform: RemoteTransform3D = $GrabArea/GrabTransform
@@ -35,7 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		if not _grabbables.is_empty():
+		if not _grabbables.is_empty() and not _grabbing:
 			# If the robot should grab something
 			# Find the body that is closest to the grab area
 			var closest_grabbable: Grabbable
@@ -47,7 +48,14 @@ func _input(event: InputEvent) -> void:
 				) < min_distance):
 					closest_grabbable = grabbable
 			
+			# Set the remote transform to the grabbable object
 			_grab_transform.remote_path = closest_grabbable.get_path()
+			_grabbing = true
+		elif _grabbing:
+			# If the robot wants to release what it's grabbing
+			_grab_transform.remote_path = ""
+			_grabbing = false
+
 
 func _on_grab_area_body_entered(body: Node3D) -> void:
 	# Add all nearby Grabbables to the list of possible grabbables
