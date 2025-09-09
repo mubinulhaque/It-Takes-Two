@@ -1,4 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxbieoea4jurt"]
+[gd_scene load_steps=10 format=3 uid="uid://dxbieoea4jurt"]
+
+[ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="1_acxxc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_acxxc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_eagvo"]
+sky_material = SubResource("ProceduralSkyMaterial_acxxc")
+
+[sub_resource type="Environment" id="Environment_jgt2s"]
+background_mode = 2
+sky = SubResource("Sky_eagvo")
+tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dl0lf"]
 size = Vector2(10, 10)
@@ -16,6 +30,13 @@ height = 0.4
 
 [node name="RobotTesting" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jgt2s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
@@ -30,6 +51,7 @@ shape = SubResource("BoxShape3D_dl0lf")
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 5, 5)
 
 [node name="Robot" type="CharacterBody3D" parent="."]
+script = ExtResource("1_acxxc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Robot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
