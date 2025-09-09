@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxbieoea4jurt"]
+[gd_scene load_steps=14 format=3 uid="uid://dxbieoea4jurt"]
 
 [ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="1_acxxc"]
+[ext_resource type="Script" uid="uid://cmk83ynbhnj0o" path="res://scripts/grabbable.gd" id="2_eagvo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_acxxc"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,6 +28,12 @@ size = Vector3(10, 1, 10)
 [sub_resource type="SphereMesh" id="SphereMesh_dl0lf"]
 radius = 0.2
 height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_acxxc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_acxxc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eagvo"]
 
 [node name="RobotTesting" type="Node3D"]
 
@@ -64,3 +71,28 @@ mesh = SubResource("CapsuleMesh_dl0lf")
 [node name="Eyes" type="MeshInstance3D" parent="Robot/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.5)
 mesh = SubResource("SphereMesh_dl0lf")
+
+[node name="GrabArea" type="Area3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot/GrabArea"]
+shape = SubResource("SphereShape3D_acxxc")
+
+[node name="GrabTransform" type="RemoteTransform3D" parent="Robot/GrabArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="TestGrabbable" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+script = ExtResource("2_eagvo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestGrabbable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_acxxc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestGrabbable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_eagvo")
+
+[connection signal="body_entered" from="Robot/GrabArea" to="Robot" method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="Robot/GrabArea" to="Robot" method="_on_grab_area_body_exited"]
