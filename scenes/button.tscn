@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dchiyapfkkey5"]
+[gd_scene load_steps=15 format=3 uid="uid://dchiyapfkkey5"]
 
+[ext_resource type="Script" uid="uid://igjxmgvpssnh" path="res://scripts/button.gd" id="1_is61r"]
 [ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="1_mi6dp"]
 [ext_resource type="PackedScene" uid="uid://dc5t2qgmhb2nf" path="res://addons/godot-xr-tools/objects/hand_pose_area.tscn" id="2_rhj8v"]
 [ext_resource type="Script" uid="uid://cvqvx4omkyss4" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="2_t81cg"]
@@ -37,6 +38,7 @@ metadata/_custom_type_script = "uid://dcvt1thuyxoim"
 radius = 0.05
 
 [node name="Button" type="Node3D"]
+script = ExtResource("1_is61r")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
@@ -69,3 +71,5 @@ shape = SubResource("SphereShape3D_3q610")
 
 [connection signal="body_entered" from="InteractableAreaButton" to="InteractableAreaButton/XRToolsRumbler" method="rumble_hand"]
 [connection signal="body_exited" from="InteractableAreaButton" to="InteractableAreaButton/XRToolsRumbler" method="cancel_hand"]
+[connection signal="button_pressed" from="InteractableAreaButton" to="." method="_on_interactable_area_button_pressed"]
+[connection signal="button_released" from="InteractableAreaButton" to="." method="_on_interactable_area_button_released"]
