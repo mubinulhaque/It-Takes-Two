@@ -14,6 +14,7 @@ const _TURN_SPEED := 5
 @export var grab: String = "ui_accept"
 
 var _forward_axis: float
+var _turn_dir: float
 ## Bodies that can be grabbed by the robot
 var _grabbables: Array[Grabbable]
 ## Body that is currently grabbed by the robot
@@ -39,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, _MOVE_SPEED)
 	
 	# Turning
-	rotate_y(Input.get_axis(right, left) * _TURN_SPEED * delta)
+	rotate_y(_turn_dir * _TURN_SPEED * delta)
 	
 	move_and_slide()
 
@@ -51,6 +52,12 @@ func _input(event: InputEvent) -> void:
 	) and keyboard_control:
 		# If the robot should move forwards or backwards
 		_forward_axis = Input.get_axis(forwards, backwards)
+	elif (
+			event.is_action(right)
+			or event.is_action(left)
+	) and keyboard_control:
+		# If the robot should turn
+		_turn_dir = Input.get_axis(right, left)
 	elif event.is_action_pressed(grab) and keyboard_control:
 		# If the grab button is pressed
 		if not _grabbables.is_empty() and not _grabbed:
@@ -96,3 +103,11 @@ func _on_grab_area_body_exited(body: Node3D) -> void:
 		if body in _grabbables:
 			var index := _grabbables.find(body)
 			_grabbables.remove_at(index)
+
+
+func _on_left_button_pressed() -> void:
+	rotate_y(PI / 2)
+
+
+func _on_right_button_pressed() -> void:
+	rotate_y(-PI / 2)
