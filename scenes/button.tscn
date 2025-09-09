@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dchiyapfkkey5"]
+[gd_scene load_steps=14 format=3 uid="uid://dchiyapfkkey5"]
 
 [ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="1_mi6dp"]
 [ext_resource type="PackedScene" uid="uid://dc5t2qgmhb2nf" path="res://addons/godot-xr-tools/objects/hand_pose_area.tscn" id="2_rhj8v"]
+[ext_resource type="Script" uid="uid://cvqvx4omkyss4" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="2_t81cg"]
 [ext_resource type="Animation" uid="uid://cevirj0eagdrq" path="res://addons/godot-xr-tools/hands/animations/left/Sign 1.res" id="3_1bdt2"]
+[ext_resource type="Resource" uid="uid://brci6umrcd157" path="res://addons/godot-xr-tools/rumble/tap_rumble.tres" id="3_is61r"]
 [ext_resource type="Script" uid="uid://dcvt1thuyxoim" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_8m7bo"]
 [ext_resource type="Animation" uid="uid://bcwx6a6mhsoj2" path="res://addons/godot-xr-tools/hands/animations/right/Sign 1.res" id="5_t81cg"]
 
@@ -52,6 +54,11 @@ button = NodePath("../StaticBody3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableAreaButton"]
 shape = SubResource("CylinderShape3D_rus8k")
 
+[node name="XRToolsRumbler" type="Node" parent="InteractableAreaButton"]
+script = ExtResource("2_t81cg")
+event = ExtResource("3_is61r")
+metadata/_custom_type_script = "uid://cvqvx4omkyss4"
+
 [node name="HandPoseArea" parent="." instance=ExtResource("2_rhj8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 left_pose = SubResource("Resource_is61r")
@@ -59,3 +66,6 @@ right_pose = SubResource("Resource_iw4ej")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HandPoseArea"]
 shape = SubResource("SphereShape3D_3q610")
+
+[connection signal="body_entered" from="InteractableAreaButton" to="InteractableAreaButton/XRToolsRumbler" method="rumble_hand"]
+[connection signal="body_exited" from="InteractableAreaButton" to="InteractableAreaButton/XRToolsRumbler" method="cancel_hand"]
