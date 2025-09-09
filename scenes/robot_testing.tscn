@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxbieoea4jurt"]
+[gd_scene load_steps=16 format=3 uid="uid://dxbieoea4jurt"]
 
 [ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="1_acxxc"]
 [ext_resource type="Script" uid="uid://cmk83ynbhnj0o" path="res://scripts/grabbable.gd" id="2_eagvo"]
@@ -30,6 +30,12 @@ radius = 0.2
 height = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_acxxc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eagvo"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jgt2s"]
+size = Vector3(0.75, 0.25, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_acxxc"]
 
@@ -82,6 +88,37 @@ shape = SubResource("SphereShape3D_acxxc")
 [node name="GrabTransform" type="RemoteTransform3D" parent="Robot/GrabArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
+[node name="Robot2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+script = ExtResource("1_acxxc")
+forwards = "forwards"
+backwards = "backwards"
+left = "left"
+right = "right"
+grab = "grab"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dl0lf")
+
+[node name="Body" type="MeshInstance3D" parent="Robot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_eagvo")
+
+[node name="Eyes" type="MeshInstance3D" parent="Robot2/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.625)
+mesh = SubResource("BoxMesh_jgt2s")
+
+[node name="GrabArea" type="Area3D" parent="Robot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot2/GrabArea"]
+shape = SubResource("SphereShape3D_acxxc")
+
+[node name="GrabTransform" type="RemoteTransform3D" parent="Robot2/GrabArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
 [node name="TestGrabbable" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 script = ExtResource("2_eagvo")
@@ -96,3 +133,5 @@ shape = SubResource("BoxShape3D_eagvo")
 
 [connection signal="body_entered" from="Robot/GrabArea" to="Robot" method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="Robot/GrabArea" to="Robot" method="_on_grab_area_body_exited"]
+[connection signal="body_entered" from="Robot2/GrabArea" to="Robot2" method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="Robot2/GrabArea" to="Robot2" method="_on_grab_area_body_exited"]

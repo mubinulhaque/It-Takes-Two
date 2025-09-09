@@ -5,6 +5,12 @@ const _MOVE_SPEED := 5
 ## Turning speed of the robot
 const _TURN_SPEED := 5
 
+@export var forwards: String = "ui_up"
+@export var backwards: String = "ui_down"
+@export var left: String = "ui_left"
+@export var right: String = "ui_right"
+@export var grab: String = "ui_accept"
+
 ## Bodies that can be grabbed by the robot
 var _grabbables: Array[Grabbable]
 ## Body that is currently grabbed by the robot
@@ -19,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	var _input_dir := (transform.basis * Vector3(
 			0,
 			0,
-			Input.get_axis("ui_up", "ui_down")
+			Input.get_axis(forwards, backwards)
 	)).normalized()
 	
 	if _input_dir:
@@ -30,13 +36,13 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, _MOVE_SPEED)
 	
 	# Turning
-	rotate_y(Input.get_axis("ui_right", "ui_left") * _TURN_SPEED * delta)
+	rotate_y(Input.get_axis(right, left) * _TURN_SPEED * delta)
 	
 	move_and_slide()
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed(grab):
 		if not _grabbables.is_empty() and not _grabbed:
 			# If the robot should grab something
 			# Find the body that is closest to the grab area
