@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxbieoea4jurt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dl0lf"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dl0lf"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl0lf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dl0lf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dl0lf"]
+radius = 0.2
+height = 0.4
+
+[node name="RobotTesting" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_dl0lf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_dl0lf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 5, 5)
+
+[node name="Robot" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dl0lf")
+
+[node name="Body" type="MeshInstance3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_dl0lf")
+
+[node name="Eyes" type="MeshInstance3D" parent="Robot/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.5)
+mesh = SubResource("SphereMesh_dl0lf")
