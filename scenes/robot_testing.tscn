@@ -82,7 +82,7 @@ shape = SubResource("SphereShape3D_acxxc")
 [node name="GrabTransform" type="RemoteTransform3D" parent="Robot/GrabArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
-[node name="TestGrabbable" type="AnimatableBody3D" parent="."]
+[node name="TestGrabbable" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 script = ExtResource("2_eagvo")
 
