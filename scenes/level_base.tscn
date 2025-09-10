@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=19 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_58o6h"]
 [ext_resource type="PackedScene" uid="uid://dchiyapfkkey5" path="res://scenes/circle_button.tscn" id="2_8rhjg"]
 [ext_resource type="PackedScene" uid="uid://b2mmg773ujq1n" path="res://scenes/square_button.tscn" id="3_krm4r"]
 [ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="4_8n3nq"]
+[ext_resource type="Material" uid="uid://dm3nx4lbqv2wd" path="res://materials/bluey.tres" id="5_8rhjg"]
+[ext_resource type="Material" uid="uid://8evmslx18foy" path="res://materials/rose.tres" id="6_krm4r"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
 size = Vector2(5, 5)
@@ -20,6 +22,7 @@ size = Vector3(1.5, 0.1, 0.4)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xbjy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4nkto"]
+material = ExtResource("5_8rhjg")
 
 [sub_resource type="SphereMesh" id="SphereMesh_fcfvj"]
 radius = 0.2
@@ -30,6 +33,7 @@ height = 0.4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4nkto"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fcfvj"]
+material = ExtResource("6_krm4r")
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pa8r4"]
