@@ -9,6 +9,7 @@ size = Vector2(20, 20)
 size = Vector3(10, 1, 10)
 
 [node name="Level1" instance=ExtResource("1_014kd")]
+_next_level = "uid://df68esmtjutn4"
 
 [node name="RobotBluey" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
