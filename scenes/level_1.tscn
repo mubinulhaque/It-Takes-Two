@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=13 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_014kd"]
-[ext_resource type="PackedScene" uid="uid://dchiyapfkkey5" path="res://scenes/button.tscn" id="2_bswci"]
+[ext_resource type="PackedScene" uid="uid://dchiyapfkkey5" path="res://scenes/circle_button.tscn" id="2_bswci"]
+[ext_resource type="PackedScene" uid="uid://b2mmg773ujq1n" path="res://scenes/square_button.tscn" id="3_5xbjy"]
 [ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="3_rus8k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
@@ -53,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
 [node name="ForwardButton" parent="Console/BlueyControls" index="0" instance=ExtResource("2_bswci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, -0.14999998)
 
-[node name="BackwardButton" parent="Console/BlueyControls" index="1" instance=ExtResource("2_bswci")]
+[node name="BackButton" parent="Console/BlueyControls" index="1" instance=ExtResource("2_bswci")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0.14999998)
 
 [node name="LeftButton" parent="Console/BlueyControls" index="2" instance=ExtResource("2_bswci")]
@@ -61,6 +62,21 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.15, 0, 0)
 
 [node name="RightButton" parent="Console/BlueyControls" index="3" instance=ExtResource("2_bswci")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.15, 0, 0)
+
+[node name="RoseControls" type="Node3D" parent="Console" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+
+[node name="ForwardButton" parent="Console/RoseControls" index="0" instance=ExtResource("3_5xbjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+
+[node name="BackButton" parent="Console/RoseControls" index="1" instance=ExtResource("3_5xbjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
+
+[node name="LeftButton" parent="Console/RoseControls" index="2" instance=ExtResource("3_5xbjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0)
+
+[node name="RightButton" parent="Console/RoseControls" index="3" instance=ExtResource("3_5xbjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
 
 [node name="RobotBluey" type="CharacterBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -90,8 +106,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [connection signal="pressed" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="released" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_released"]
-[connection signal="pressed" from="Console/BlueyControls/BackwardButton" to="RobotBluey" method="_on_forward_button_released"]
-[connection signal="released" from="Console/BlueyControls/BackwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
+[connection signal="pressed" from="Console/BlueyControls/BackButton" to="RobotBluey" method="_on_forward_button_released"]
+[connection signal="released" from="Console/BlueyControls/BackButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="pressed" from="Console/BlueyControls/LeftButton" to="RobotBluey" method="_on_left_button_pressed"]
 [connection signal="pressed" from="Console/BlueyControls/RightButton" to="RobotBluey" method="_on_right_button_pressed"]
 [connection signal="body_entered" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_entered"]

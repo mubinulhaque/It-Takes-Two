@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2mmg773ujq1n"]
+
+[ext_resource type="PackedScene" uid="uid://dchiyapfkkey5" path="res://scenes/circle_button.tscn" id="1_5o08l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ih23t"]
+size = Vector3(0.08, 0.04, 0.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5o08l"]
+size = Vector3(0.08, 0.04, 0.08)
+
+[node name="SquareButton" instance=ExtResource("1_5o08l")]
+
+[node name="MeshInstance3D" parent="StaticBody3D" index="0"]
+mesh = SubResource("BoxMesh_ih23t")
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="1"]
+shape = SubResource("BoxShape3D_5o08l")
