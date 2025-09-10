@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=24 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_58o6h"]
+[ext_resource type="Script" uid="uid://dcc7rp13n77la" path="res://scripts/level.gd" id="2_8n3nq"]
 [ext_resource type="PackedScene" uid="uid://dchiyapfkkey5" path="res://scenes/circle_button.tscn" id="2_8rhjg"]
 [ext_resource type="PackedScene" uid="uid://b2mmg773ujq1n" path="res://scenes/square_button.tscn" id="3_krm4r"]
 [ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="4_8n3nq"]
@@ -41,7 +42,23 @@ size = Vector3(0.75, 0.25, 0.25)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_15mv3"]
 
-[node name="Level1" instance=ExtResource("1_58o6h")]
+[sub_resource type="SphereMesh" id="SphereMesh_ct2u3"]
+material = ExtResource("5_8rhjg")
+radius = 1.0
+height = 0.001
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_plsol"]
+height = 0.1
+radius = 0.75
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8ag0e"]
+material = ExtResource("6_krm4r")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kj5lu"]
+size = Vector3(1.5, 0.1, 1.5)
+
+[node name="LevelBase" instance=ExtResource("1_58o6h")]
+script = ExtResource("2_8n3nq")
 
 [node name="XROrigin3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 3)
@@ -98,6 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
 
 [node name="RobotBluey" type="CharacterBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+collision_layer = 33
 script = ExtResource("4_8n3nq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RobotBluey" index="0"]
@@ -124,6 +142,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="RobotRose" type="CharacterBody3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -20)
+collision_layer = 65
 script = ExtResource("4_8n3nq")
 keyboard_control = true
 forwards = "forwards"
@@ -154,6 +173,34 @@ shape = SubResource("SphereShape3D_15mv3")
 [node name="GrabTransform" type="RemoteTransform3D" parent="RobotRose/GrabArea" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
+[node name="ExitBluey" type="Area3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+collision_layer = 0
+collision_mask = 32
+monitorable = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ExitBluey" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("SphereMesh_ct2u3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitBluey" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("CylinderShape3D_plsol")
+
+[node name="ExitRose" type="Area3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -24)
+collision_layer = 0
+collision_mask = 64
+monitorable = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ExitRose" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("PlaneMesh_8ag0e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitRose" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_kj5lu")
+
 [connection signal="pressed" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="released" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_released"]
 [connection signal="pressed" from="Console/BlueyControls/BackButton" to="RobotBluey" method="_on_forward_button_released"]
@@ -170,3 +217,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 [connection signal="body_exited" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_exited"]
 [connection signal="body_entered" from="RobotRose/GrabArea" to="RobotRose" method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="RobotRose/GrabArea" to="RobotRose" method="_on_grab_area_body_exited"]
+[connection signal="body_entered" from="ExitBluey" to="." method="robot_finished"]
+[connection signal="body_exited" from="ExitBluey" to="." method="robot_unfinished"]
+[connection signal="body_entered" from="ExitRose" to="." method="robot_finished"]
+[connection signal="body_exited" from="ExitRose" to="." method="robot_unfinished"]

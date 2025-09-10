@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvxbt3ewtd148"]
+
+[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/level_base.tscn" id="1_014kd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_014kd"]
+size = Vector3(10, 1, 10)
+
+[node name="Level1" instance=ExtResource("1_014kd")]
+
+[node name="RobotBluey" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
+collision_layer = 33
+
+[node name="RobotRose" parent="." index="6"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -13)
+collision_layer = 65
+
+[node name="ExitBluey" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -24)
+
+[node name="TestingFloor" type="StaticBody3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloor" index="0"]
+mesh = SubResource("PlaneMesh_014kd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_014kd")
