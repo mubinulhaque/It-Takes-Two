@@ -59,7 +59,7 @@ size = Vector3(1.5, 0.1, 1.5)
 
 [node name="LevelBase" instance=ExtResource("1_58o6h")]
 script = ExtResource("2_8n3nq")
-next_level = null
+_next_level = ""
 
 [node name="XROrigin3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 3)
@@ -99,6 +99,8 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.15, 0, 0)
 [node name="RightButton" parent="Console/BlueyControls" index="3" instance=ExtResource("2_8rhjg")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.15, 0, 0)
 
+[node name="GrabButton" parent="Console/BlueyControls" index="4" instance=ExtResource("2_8rhjg")]
+
 [node name="RoseControls" type="Node3D" parent="Console" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
 
@@ -113,6 +115,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0)
 
 [node name="RightButton" parent="Console/RoseControls" index="3" instance=ExtResource("3_krm4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
+
+[node name="GrabButton" parent="Console/RoseControls" index="4" instance=ExtResource("3_krm4r")]
 
 [node name="RobotBluey" type="CharacterBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
@@ -211,12 +215,14 @@ one_shot = true
 [connection signal="released" from="Console/BlueyControls/BackButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="pressed" from="Console/BlueyControls/LeftButton" to="RobotBluey" method="_on_left_button_pressed"]
 [connection signal="pressed" from="Console/BlueyControls/RightButton" to="RobotBluey" method="_on_right_button_pressed"]
+[connection signal="pressed" from="Console/BlueyControls/GrabButton" to="RobotBluey" method="_on_grab_button_pressed"]
 [connection signal="pressed" from="Console/RoseControls/ForwardButton" to="RobotRose" method="_on_forward_button_pressed"]
 [connection signal="released" from="Console/RoseControls/ForwardButton" to="RobotRose" method="_on_forward_button_released"]
 [connection signal="pressed" from="Console/RoseControls/BackButton" to="RobotRose" method="_on_forward_button_released"]
 [connection signal="released" from="Console/RoseControls/BackButton" to="RobotRose" method="_on_forward_button_pressed"]
 [connection signal="pressed" from="Console/RoseControls/LeftButton" to="RobotRose" method="_on_left_button_pressed"]
 [connection signal="pressed" from="Console/RoseControls/RightButton" to="RobotRose" method="_on_right_button_pressed"]
+[connection signal="pressed" from="Console/RoseControls/GrabButton" to="RobotRose" method="_on_grab_button_pressed"]
 [connection signal="body_entered" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="RobotBluey/GrabArea" to="RobotBluey" method="_on_grab_area_body_exited"]
 [connection signal="body_entered" from="RobotRose/GrabArea" to="RobotRose" method="_on_grab_area_body_entered"]

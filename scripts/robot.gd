@@ -60,27 +60,7 @@ func _input(event: InputEvent) -> void:
 		_turn_dir = Input.get_axis(right, left)
 	elif event.is_action_pressed(grab) and keyboard_control:
 		# If the grab button is pressed
-		if not _grabbables.is_empty() and not _grabbed:
-			# If the robot should grab something
-			# Find the grabbable that is closest to the grab area
-			var closest_grabbable: Grabbable
-			var min_distance: float = INF
-			
-			for grabbable in _grabbables:
-				if(grabbable.global_position.distance_squared_to(
-						_grab_area.global_position
-				) < min_distance):
-					closest_grabbable = grabbable
-			
-			# Set the remote transform to the closest grabbable
-			_grab_transform.remote_path = closest_grabbable.get_path()
-			closest_grabbable.grabbed = true
-			_grabbed = closest_grabbable
-		elif _grabbed:
-			# If the robot wants to release what it's grabbing
-			_grab_transform.remote_path = ""
-			_grabbed.grabbed = false
-			_grabbed = null
+		_on_grab_button_pressed()
 
 
 func _on_forward_button_pressed() -> void:
@@ -103,6 +83,30 @@ func _on_grab_area_body_exited(body: Node3D) -> void:
 		if body in _grabbables:
 			var index := _grabbables.find(body)
 			_grabbables.remove_at(index)
+
+
+func _on_grab_button_pressed() -> void:
+	if not _grabbables.is_empty() and not _grabbed:
+		# If the robot should grab something
+		# Find the grabbable that is closest to the grab area
+		var closest_grabbable: Grabbable
+		var min_distance: float = INF
+		
+		for grabbable in _grabbables:
+			if(grabbable.global_position.distance_squared_to(
+					_grab_area.global_position
+			) < min_distance):
+				closest_grabbable = grabbable
+		
+		# Set the remote transform to the closest grabbable
+		_grab_transform.remote_path = closest_grabbable.get_path()
+		closest_grabbable.grabbed = true
+		_grabbed = closest_grabbable
+	elif _grabbed:
+		# If the robot wants to release what it's grabbing
+		_grab_transform.remote_path = ""
+		_grabbed.grabbed = false
+		_grabbed = null
 
 
 func _on_left_button_pressed() -> void:
