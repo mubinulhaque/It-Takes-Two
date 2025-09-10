@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4yaexktgsmhr"]
+
+[ext_resource type="Script" uid="uid://l430hgdcfy0j" path="res://scripts/pressure_plate.gd" id="1_xtofl"]
+[ext_resource type="Material" uid="uid://b20fv40w3prys" path="res://materials/pressure_plate.tres" id="2_r34r6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ra442"]
+material = ExtResource("2_r34r6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fiq81"]
+size = Vector3(1.5, 0.1, 1.5)
+
+[node name="PressurePlate" type="Area3D"]
+monitorable = false
+script = ExtResource("1_xtofl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("PlaneMesh_ra442")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_fiq81")

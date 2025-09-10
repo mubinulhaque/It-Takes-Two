@@ -63,6 +63,7 @@ grab={
 3d_physics/layer_5="Grappling Target"
 3d_physics/layer_6="Bluey"
 3d_physics/layer_7="Rose"
+3d_physics/layer_8="Grabbables"
 3d_physics/layer_17="Held Objects"
 3d_physics/layer_18="Player Hands"
 3d_physics/layer_19="Grab Handles"
