@@ -20,6 +20,12 @@ sky = SubResource("Sky_cgih3")
 
 [node name="SceneBase" instance=ExtResource("1_ic3hb")]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_ubaj6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 0, 0)
+
 [node name="Vignette" parent="XROrigin3D/XRCamera3D" index="0" instance=ExtResource("2_cgih3")]
 auto_rotation_limit = 10.0
 auto_velocity_limit = 3.0
@@ -38,9 +44,3 @@ strafe = true
 [node name="FunctionPoseDetector" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("5_cgih3")]
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("4_j5pbu")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
-environment = SubResource("Environment_ubaj6")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
