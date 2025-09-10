@@ -59,6 +59,7 @@ size = Vector3(1.5, 0.1, 1.5)
 
 [node name="LevelBase" instance=ExtResource("1_58o6h")]
 script = ExtResource("2_8n3nq")
+next_level = null
 
 [node name="XROrigin3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 3)
@@ -201,6 +202,9 @@ mesh = SubResource("PlaneMesh_8ag0e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_kj5lu")
 
+[node name="FinishTimer" type="Timer" parent="." index="9"]
+one_shot = true
+
 [connection signal="pressed" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="released" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_released"]
 [connection signal="pressed" from="Console/BlueyControls/BackButton" to="RobotBluey" method="_on_forward_button_released"]
@@ -221,3 +225,4 @@ shape = SubResource("BoxShape3D_kj5lu")
 [connection signal="body_exited" from="ExitBluey" to="." method="robot_unfinished"]
 [connection signal="body_entered" from="ExitRose" to="." method="robot_finished"]
 [connection signal="body_exited" from="ExitRose" to="." method="robot_unfinished"]
+[connection signal="timeout" from="FinishTimer" to="." method="_on_finish_timer_timeout"]
