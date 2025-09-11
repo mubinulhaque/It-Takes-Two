@@ -28,16 +28,16 @@ size = Vector3(2, 2, 1)
 [node name="LevelBoxSharing" instance=ExtResource("1_6ueex")]
 _next_level = "uid://db7w5qx26t07i"
 
-[node name="RobotBluey" parent="." index="5"]
+[node name="RobotBluey" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
 
-[node name="RobotRose" parent="." index="6"]
+[node name="RobotRose" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -11)
 
-[node name="ExitBluey" parent="." index="7"]
+[node name="ExitBluey" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -29)
 
-[node name="ExitRose" parent="." index="8"]
+[node name="ExitRose" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -29)
 
 [node name="TestingFloorLeft" type="StaticBody3D" parent="." index="10"]

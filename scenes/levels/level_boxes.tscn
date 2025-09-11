@@ -34,16 +34,16 @@ size = Vector3(1, 2, 3)
 [node name="LevelBase" instance=ExtResource("1_dcmon")]
 _next_level = "uid://djvcmyohywgcy"
 
-[node name="RobotBluey" parent="." index="5"]
+[node name="RobotBluey" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -16)
 
-[node name="RobotRose" parent="." index="6"]
+[node name="RobotRose" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -16)
 
-[node name="ExitBluey" parent="." index="7"]
+[node name="ExitBluey" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -29)
 
-[node name="ExitRose" parent="." index="8"]
+[node name="ExitRose" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -29)
 
 [node name="TestingFloor" type="StaticBody3D" parent="." index="10"]
