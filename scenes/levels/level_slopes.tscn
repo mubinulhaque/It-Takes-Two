@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1luwso30d7qg"]
+
+[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_jcvqd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m5l6n"]
+size = Vector2(8, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mho6u"]
+size = Vector3(8, 1, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jcvqd"]
+size = Vector2(2, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcvqd"]
+size = Vector3(2, 1, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mho6u"]
+size = Vector2(18, 2)
+
+[node name="LevelSlopes" instance=ExtResource("1_jcvqd")]
+_next_level = "uid://df68esmtjutn4"
+
+[node name="RobotBluey" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -12)
+
+[node name="RobotRose" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
+
+[node name="ExitBluey" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -24)
+
+[node name="ExitRose" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -24)
+
+[node name="TestingFloorLeft" type="StaticBody3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloorLeft" index="0"]
+mesh = SubResource("PlaneMesh_m5l6n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloorLeft" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_mho6u")
+
+[node name="TestingFloorRight" type="StaticBody3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloorRight" index="0"]
+mesh = SubResource("PlaneMesh_m5l6n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloorRight" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_mho6u")
+
+[node name="RampLeft" type="StaticBody3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 8, 2.5, -24)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RampLeft" index="0"]
+mesh = SubResource("PlaneMesh_jcvqd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RampLeft" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_jcvqd")
+
+[node name="RampRight" type="StaticBody3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -8, 2.5, -24)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RampRight" index="0"]
+mesh = SubResource("PlaneMesh_jcvqd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RampRight" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_jcvqd")
+
+[node name="Bridge" type="StaticBody3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5, -29.33)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridge" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+mesh = SubResource("PlaneMesh_mho6u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
