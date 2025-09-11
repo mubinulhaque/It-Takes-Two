@@ -24,23 +24,22 @@ var _grabbed: Grabbable
 @onready var _grab_transform: RemoteTransform3D = $GrabArea/GrabTransform
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Moving forwards and backwards
-	var _forward_vector := (transform.basis * Vector3(
-			0,
+	var _move_vector := (Vector3(
+			_turn_dir,
 			0,
 			_forward_axis
 	)).normalized()
 	
-	if _forward_vector:
-		velocity.x = _forward_vector.x * _MOVE_SPEED
-		velocity.z = _forward_vector.z * _MOVE_SPEED
+	if _forward_axis or _turn_dir:
+		velocity.x = _move_vector.x * _MOVE_SPEED
+		velocity.z = _move_vector.z * _MOVE_SPEED
+		
+		look_at(position + velocity)
 	else:
 		velocity.x = move_toward(velocity.x, 0, _MOVE_SPEED)
 		velocity.z = move_toward(velocity.z, 0, _MOVE_SPEED)
-	
-	# Turning
-	rotate_y(_turn_dir * _TURN_SPEED * delta)
 	
 	move_and_slide()
 
@@ -57,7 +56,7 @@ func _input(event: InputEvent) -> void:
 			or event.is_action(left)
 	) and keyboard_control:
 		# If the robot should turn
-		_turn_dir = Input.get_axis(right, left)
+		_turn_dir = Input.get_axis(left, right)
 	elif event.is_action_pressed(grab) and keyboard_control:
 		# If the grab button is pressed
 		_on_grab_button_pressed()
@@ -110,8 +109,8 @@ func _on_grab_button_pressed() -> void:
 
 
 func _on_left_button_pressed() -> void:
-	rotate_y(PI / 2)
+	_turn_dir -= 1
 
 
 func _on_right_button_pressed() -> void:
-	rotate_y(-PI / 2)
+	_turn_dir += 1
