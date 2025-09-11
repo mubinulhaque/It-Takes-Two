@@ -26,6 +26,7 @@ size = Vector3(2, 0.1, 0.1)
 size = Vector3(2, 2, 1)
 
 [node name="LevelBoxSharing" instance=ExtResource("1_6ueex")]
+_next_level = "uid://db7w5qx26t07i"
 
 [node name="RobotBluey" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
