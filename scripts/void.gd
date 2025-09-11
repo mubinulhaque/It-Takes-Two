@@ -9,3 +9,5 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body is Grabbable:
 		body.respawn()
+	elif body is Robot:
+		body.respawn()

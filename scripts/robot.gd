@@ -1,3 +1,4 @@
+class_name Robot
 extends CharacterBody3D
 
 ## Movement speed of the robot
@@ -19,12 +20,19 @@ var _turn_dir: float
 var _grabbables: Array[Grabbable]
 ## Body that is currently grabbed by the robot
 var _grabbed: Grabbable
+var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+## Spawn position of the robot
+var _spawn := Vector3.ZERO
 
 @onready var _grab_area: Area3D = $GrabArea
 @onready var _grab_transform: RemoteTransform3D = $GrabArea/GrabTransform
 
 
-func _physics_process(_delta: float) -> void:
+func _ready() -> void:
+	_spawn = global_position + Vector3(0, 0.5, 0)
+
+
+func _physics_process(delta: float) -> void:
 	# Moving forwards and backwards
 	var _move_vector := (Vector3(
 			_turn_dir,
@@ -32,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 			_forward_axis
 	)).normalized()
 	
-	if _forward_axis or _turn_dir:
+	if is_on_floor() and (_forward_axis or _turn_dir):
 		velocity.x = _move_vector.x * _MOVE_SPEED
 		velocity.z = _move_vector.z * _MOVE_SPEED
 		
@@ -40,6 +48,9 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, _MOVE_SPEED)
 		velocity.z = move_toward(velocity.z, 0, _MOVE_SPEED)
+	
+	# Falling
+	velocity.y -= _gravity * delta
 	
 	move_and_slide()
 
@@ -60,6 +71,11 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed(grab) and keyboard_control:
 		# If the grab button is pressed
 		_on_grab_button_pressed()
+
+
+func respawn() -> void:
+	velocity = Vector3.ZERO
+	global_position = _spawn
 
 
 func _on_forward_button_pressed() -> void:
