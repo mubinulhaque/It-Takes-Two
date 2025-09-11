@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://djvcmyohywgcy"]
 
-[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_6ueex"]
-[ext_resource type="Script" uid="uid://dypyjr0tgggu3" path="res://scripts/gate.gd" id="2_x7o2d"]
-[ext_resource type="Material" uid="uid://ds3rln8usdf2v" path="res://materials/gate.tres" id="3_tvwtf"]
-[ext_resource type="PackedScene" uid="uid://b4yaexktgsmhr" path="res://scenes/pressure_plate.tscn" id="4_tvwtf"]
-[ext_resource type="PackedScene" uid="uid://cfmo3t7iyyi63" path="res://scenes/crate.tscn" id="5_biobp"]
+[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_anwe6"]
+[ext_resource type="Script" uid="uid://dypyjr0tgggu3" path="res://scripts/gate.gd" id="2_rej77"]
+[ext_resource type="Material" uid="uid://ds3rln8usdf2v" path="res://materials/gate.tres" id="3_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://b4yaexktgsmhr" path="res://scenes/pressure_plate.tscn" id="4_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://cfmo3t7iyyi63" path="res://scenes/crate.tscn" id="5_um320"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6ueex"]
 size = Vector2(8, 20)
@@ -19,14 +19,17 @@ size = Vector3(1, 2, 3)
 size = Vector3(1, 2, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_biobp"]
-material = ExtResource("3_tvwtf")
+material = ExtResource("3_5vn0v")
 size = Vector3(2, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqoxc"]
 size = Vector3(2, 2, 1)
 
-[node name="LevelBoxSharing" instance=ExtResource("1_6ueex")]
+[node name="LevelBoxSharing" instance=ExtResource("1_anwe6")]
 _next_level = "uid://db7w5qx26t07i"
+
+[node name="LevelLabel" parent="Console" index="4"]
+text = "Level 4"
 
 [node name="RobotBluey" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
@@ -106,7 +109,7 @@ shape = SubResource("BoxShape3D_x7o2d")
 
 [node name="Gate" type="StaticBody3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -27.5)
-script = ExtResource("2_x7o2d")
+script = ExtResource("2_rej77")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Gate" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -118,7 +121,7 @@ shape = SubResource("BoxShape3D_xqoxc")
 
 [node name="Gate2" type="StaticBody3D" parent="." index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -27.5)
-script = ExtResource("2_x7o2d")
+script = ExtResource("2_rej77")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Gate2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -128,16 +131,16 @@ mesh = SubResource("BoxMesh_biobp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_xqoxc")
 
-[node name="PressurePlate" parent="." index="18" instance=ExtResource("4_tvwtf")]
+[node name="PressurePlate" parent="." index="18" instance=ExtResource("4_ts8eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -23)
 
-[node name="PressurePlate2" parent="." index="19" instance=ExtResource("4_tvwtf")]
+[node name="PressurePlate2" parent="." index="19" instance=ExtResource("4_ts8eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -20)
 
-[node name="Crate" parent="." index="20" instance=ExtResource("5_biobp")]
+[node name="Crate" parent="." index="20" instance=ExtResource("5_um320")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -20)
 
-[node name="Crate2" parent="." index="21" instance=ExtResource("5_biobp")]
+[node name="Crate2" parent="." index="21" instance=ExtResource("5_um320")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -23)
 
 [connection signal="activated" from="PressurePlate" to="Gate" method="_open_gate"]

@@ -122,6 +122,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
 
 [node name="GrabButton" parent="Console/RoseControls" index="4" instance=ExtResource("3_krm4r")]
 
+[node name="LevelLabel" type="Label3D" parent="Console" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 1, -0.5)
+text = "Level 1"
+
 [node name="Void" type="Area3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -22)
 collision_layer = 0

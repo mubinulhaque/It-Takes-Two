@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c1luwso30d7qg"]
 
-[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_jcvqd"]
+[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_3bmlt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m5l6n"]
 size = Vector2(8, 20)
@@ -20,8 +20,11 @@ size = Vector2(18, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m5l6n"]
 size = Vector3(18, 1, 2)
 
-[node name="LevelSlopes" instance=ExtResource("1_jcvqd")]
+[node name="LevelSlopes" instance=ExtResource("1_3bmlt")]
 _next_level = "uid://df68esmtjutn4"
+
+[node name="LevelLabel" parent="Console" index="4"]
+text = "Level 2"
 
 [node name="RobotBluey" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -12)
@@ -35,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -24)
 [node name="ExitRose" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -24)
 
-[node name="TestingFloorLeft" type="StaticBody3D" parent="." index="10"]
+[node name="TestingFloorLeft" type="StaticBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloorLeft" index="0"]
@@ -45,7 +48,7 @@ mesh = SubResource("PlaneMesh_m5l6n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_mho6u")
 
-[node name="TestingFloorRight" type="StaticBody3D" parent="." index="11"]
+[node name="TestingFloorRight" type="StaticBody3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloorRight" index="0"]
@@ -55,7 +58,7 @@ mesh = SubResource("PlaneMesh_m5l6n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_mho6u")
 
-[node name="RampLeft" type="StaticBody3D" parent="." index="12"]
+[node name="RampLeft" type="StaticBody3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 8, 2.5, -24)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RampLeft" index="0"]
@@ -65,7 +68,7 @@ mesh = SubResource("PlaneMesh_jcvqd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_jcvqd")
 
-[node name="RampRight" type="StaticBody3D" parent="." index="13"]
+[node name="RampRight" type="StaticBody3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -8, 2.5, -24)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RampRight" index="0"]
@@ -75,7 +78,7 @@ mesh = SubResource("PlaneMesh_jcvqd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_jcvqd")
 
-[node name="Bridge" type="StaticBody3D" parent="." index="14"]
+[node name="Bridge" type="StaticBody3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -29.33)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bridge" index="0"]
