@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://drm0tkpvdgvas" path="res://textures/splashscreen.png" id="2_hprjd"]
 
 [node name="LoadingScreen" instance=ExtResource("1_ep5rh")]
-main_scene = "uid://cvxbt3ewtd148"
+main_scene = "uid://cq6w1n3hhcche"
 prompt_for_continue = false
 
 [node name="LoadingScreen" parent="." index="2"]
