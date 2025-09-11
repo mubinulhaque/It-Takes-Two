@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvxbt3ewtd148"]
 
-[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_2pinc"]
+[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_014kd"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
 size = Vector2(20, 20)
@@ -8,7 +8,7 @@ size = Vector2(20, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_014kd"]
 size = Vector3(20, 1, 20)
 
-[node name="Level1" instance=ExtResource("1_2pinc")]
+[node name="Level1" instance=ExtResource("1_014kd")]
 _next_level = "uid://c1luwso30d7qg"
 
 [node name="RobotBluey" parent="." index="6"]
@@ -20,7 +20,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0
 [node name="ExitBluey" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -24)
 
-[node name="TestingFloor" type="StaticBody3D" parent="." index="10"]
+[node name="TestingFloor" type="StaticBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloor" index="0"]
