@@ -1,6 +1,8 @@
 class_name Robot
 extends CharacterBody3D
 
+signal ungrab_requested ## Emitted when another robot should ungrab something
+
 ## Movement speed of the robot
 const _MOVE_SPEED := 5
 ## Turning speed of the robot
@@ -114,14 +116,16 @@ func _on_grab_button_pressed() -> void:
 				closest_grabbable = grabbable
 		
 		# Set the remote transform to the closest grabbable
-		_grab_transform.remote_path = closest_grabbable.get_path()
+		if closest_grabbable.grabbed:
+			ungrab_requested.emit()
+			await get_tree().process_frame
+		
 		closest_grabbable.grabbed = true
+		_grab_transform.remote_path = closest_grabbable.get_path()
 		_grabbed = closest_grabbable
 	elif _grabbed:
 		# If the robot wants to release what it's grabbing
-		_grab_transform.remote_path = ""
-		_grabbed.grabbed = false
-		_grabbed = null
+		_on_ungrab_requested()
 
 
 func _on_left_button_pressed() -> void:
@@ -130,3 +134,9 @@ func _on_left_button_pressed() -> void:
 
 func _on_right_button_pressed() -> void:
 	_turn_dir += 1
+
+
+func _on_ungrab_requested() -> void:
+	_grab_transform.remote_path = ""
+	_grabbed.grabbed = false
+	_grabbed = null
