@@ -40,31 +40,35 @@ mesh = SubResource("PlaneMesh_rus8k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_5xbjy")
 
-[node name="ButtonLevel1" parent="Console" index="2" instance=ExtResource("2_p0wlc")]
+[node name="Label3D" type="Label3D" parent="Console" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0.1, -0.3)
+text = "Select a Level"
+
+[node name="ButtonLevel1" parent="Console" index="3" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.5, 0, 0)
 _level = "uid://cvxbt3ewtd148"
 
-[node name="ButtonLevel2" parent="Console" index="3" instance=ExtResource("2_p0wlc")]
+[node name="ButtonLevel2" parent="Console" index="4" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.35, 0, 0)
 _level = "uid://c1luwso30d7qg"
 
-[node name="ButtonLevel3" parent="Console" index="4" instance=ExtResource("2_p0wlc")]
+[node name="ButtonLevel3" parent="Console" index="5" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.2, 0, 0)
 _level = "uid://df68esmtjutn4"
 
-[node name="ButtonLevel4" parent="Console" index="5" instance=ExtResource("2_p0wlc")]
+[node name="ButtonLevel4" parent="Console" index="6" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.05, 0, 0)
 _level = "uid://djvcmyohywgcy"
 
-[node name="ButtonLevel5" parent="Console" index="6" instance=ExtResource("2_p0wlc")]
+[node name="ButtonLevel5" parent="Console" index="7" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.1, 0, 0)
 _level = "uid://db7w5qx26t07i"
 
-[node name="ButtonLevel6" parent="Console" index="7" instance=ExtResource("2_p0wlc")]
+[node name="ButtonLevel6" parent="Console" index="8" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.25, 0, 0)
 _level = "uid://be0swhq4ngjn8"
 
-[node name="ButtonLevel7" parent="Console" index="8" instance=ExtResource("2_p0wlc")]
+[node name="ButtonLevel7" parent="Console" index="9" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.4, 0, 0)
 _level = "uid://be0swhq4ngjn8"
 
