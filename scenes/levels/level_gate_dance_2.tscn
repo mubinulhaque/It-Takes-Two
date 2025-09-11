@@ -166,16 +166,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -13)
 
 [connection signal="activated" from="BackLeftPlate" to="FrontRightGate" method="_open_gate"]
-[connection signal="deactivated" from="BackLeftPlate" to="FrontRightGate" method="_close_gate"]
 [connection signal="activated" from="BackMiddleLeftPlate" to="FrontMiddleRightGate" method="_open_gate"]
-[connection signal="deactivated" from="BackMiddleLeftPlate" to="FrontMiddleRightGate" method="_close_gate"]
 [connection signal="activated" from="BackMiddleRightPlate" to="FrontMiddleLeftGate" method="_open_gate"]
-[connection signal="deactivated" from="BackMiddleRightPlate" to="FrontMiddleLeftGate" method="_close_gate"]
 [connection signal="activated" from="BackRightPlate" to="FrontLeftGate" method="_open_gate"]
-[connection signal="deactivated" from="BackRightPlate" to="FrontLeftGate" method="_close_gate"]
 [connection signal="activated" from="FrontLeftPlate" to="BackRightGate" method="_open_gate"]
-[connection signal="deactivated" from="FrontLeftPlate" to="BackRightGate" method="_close_gate"]
 [connection signal="activated" from="FrontMiddlePlate" to="BackMiddleGate" method="_open_gate"]
-[connection signal="deactivated" from="FrontMiddlePlate" to="BackMiddleGate" method="_close_gate"]
 [connection signal="activated" from="FrontRightPlate" to="BackLeftGate" method="_open_gate"]
-[connection signal="deactivated" from="FrontRightPlate" to="BackLeftGate" method="_close_gate"]
