@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=42 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_58o6h"]
 [ext_resource type="Script" uid="uid://dcc7rp13n77la" path="res://scripts/level.gd" id="2_8n3nq"]
@@ -8,9 +8,14 @@
 [ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="4_8n3nq"]
 [ext_resource type="Material" uid="uid://dm3nx4lbqv2wd" path="res://materials/bluey.tres" id="5_8rhjg"]
 [ext_resource type="Script" uid="uid://d0ca1qbqufaet" path="res://scripts/void.gd" id="5_40ga3"]
+[ext_resource type="Texture2D" uid="uid://ckiadnt4gl24a" path="res://textures/arrow_up.png" id="5_l4xu8"]
+[ext_resource type="Texture2D" uid="uid://b5w1xcdgg6mgn" path="res://textures/arrow_down.png" id="6_3iy5o"]
 [ext_resource type="Material" uid="uid://nqcsi4sw0568" path="res://materials/grey_tile.tres" id="6_dq8h5"]
 [ext_resource type="Material" uid="uid://8evmslx18foy" path="res://materials/rose.tres" id="6_krm4r"]
 [ext_resource type="Material" uid="uid://c1a7dkmwp0ion" path="res://materials/white_tile.tres" id="6_w06h8"]
+[ext_resource type="Texture2D" uid="uid://bp3fbxg852cow" path="res://textures/arrow_left.png" id="7_p3ew5"]
+[ext_resource type="Texture2D" uid="uid://gd48x4m37ein" path="res://textures/arrow_right.png" id="8_x2afm"]
+[ext_resource type="Texture2D" uid="uid://bjriuqc7suseu" path="res://textures/hand.png" id="9_3iy5o"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
 size = Vector2(5, 5)
@@ -24,18 +29,18 @@ size = Vector2(5, 5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ynct0"]
 size = Vector3(5, 0.1, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynct0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vve2"]
 albedo_color = Color(0.20784314, 0.23921569, 0.26666668, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w06h8"]
-material = SubResource("StandardMaterial3D_ynct0")
+material = SubResource("StandardMaterial3D_1vve2")
 size = Vector2(5, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w06h8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbft6"]
 albedo_color = Color(0.20784314, 0.23921569, 0.26666668, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dq8h5"]
-material = SubResource("StandardMaterial3D_w06h8")
+material = SubResource("StandardMaterial3D_bbft6")
 size = Vector2(5, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rus8k"]
@@ -174,34 +179,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
 
 [node name="ForwardButton" parent="Console/BlueyControls" index="0" instance=ExtResource("2_8rhjg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, -0.14999998)
+_image = ExtResource("5_l4xu8")
 
 [node name="BackButton" parent="Console/BlueyControls" index="1" instance=ExtResource("2_8rhjg")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0.14999998)
+_image = ExtResource("6_3iy5o")
 
 [node name="LeftButton" parent="Console/BlueyControls" index="2" instance=ExtResource("2_8rhjg")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.15, 0, 0)
+_image = ExtResource("7_p3ew5")
 
 [node name="RightButton" parent="Console/BlueyControls" index="3" instance=ExtResource("2_8rhjg")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.15, 0, 0)
+_image = ExtResource("8_x2afm")
 
 [node name="GrabButton" parent="Console/BlueyControls" index="4" instance=ExtResource("2_8rhjg")]
+_image = ExtResource("9_3iy5o")
+_scale = 0.01
 
 [node name="RoseControls" type="Node3D" parent="Console" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
 
 [node name="ForwardButton" parent="Console/RoseControls" index="0" instance=ExtResource("3_krm4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+_image = ExtResource("5_l4xu8")
 
 [node name="BackButton" parent="Console/RoseControls" index="1" instance=ExtResource("3_krm4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
+_image = ExtResource("6_3iy5o")
 
 [node name="LeftButton" parent="Console/RoseControls" index="2" instance=ExtResource("3_krm4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0)
+_image = ExtResource("7_p3ew5")
 
 [node name="RightButton" parent="Console/RoseControls" index="3" instance=ExtResource("3_krm4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
+_image = ExtResource("8_x2afm")
 
 [node name="GrabButton" parent="Console/RoseControls" index="4" instance=ExtResource("3_krm4r")]
+_image = ExtResource("9_3iy5o")
+_scale = 0.01
 
 [node name="LevelLabel" type="Label3D" parent="Console" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 1, -0.5)

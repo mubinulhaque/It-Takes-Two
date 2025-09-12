@@ -52,6 +52,12 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("CylinderShape3D_bswci")
 
+[node name="Label3D" type="Label3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.021, 0)
+text = "1"
+font_size = 8
+outline_size = 4
+
 [node name="InteractableAreaButton" parent="." instance=ExtResource("3_25g0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019923538, 0)
 button = NodePath("../StaticBody3D")
