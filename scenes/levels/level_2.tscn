@@ -27,17 +27,14 @@ _next_level = "uid://df68esmtjutn4"
 [node name="LevelLabel" parent="Console" index="4"]
 text = "Level 2"
 
-[node name="RobotBluey" parent="." index="6"]
+[node name="MeshInstance3D" parent="LeftWall" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" parent="RightWall" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="RobotBluey" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -12)
-
-[node name="RobotRose" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
-
-[node name="ExitBluey" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -24)
-
-[node name="ExitRose" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -24)
 
 [node name="TestingFloorLeft" type="StaticBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
@@ -93,3 +90,12 @@ mesh = SubResource("PlaneMesh_mho6u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_m5l6n")
+
+[node name="RobotRose" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
+
+[node name="ExitBluey" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -24)
+
+[node name="ExitRose" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -24)

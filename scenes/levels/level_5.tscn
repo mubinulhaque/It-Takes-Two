@@ -26,17 +26,17 @@ _next_level = "uid://be0swhq4ngjn8"
 [node name="LevelLabel" parent="Console" index="4"]
 text = "Level 5"
 
-[node name="RobotBluey" parent="." index="6"]
+[node name="BackWall" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 10, -24)
+
+[node name="LeftWall" parent="." index="6"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -8, 10, -20)
+
+[node name="RightWall" parent="." index="7"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 8, 10, -20)
+
+[node name="RobotBluey" parent="." index="10"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7, 0, -13)
-
-[node name="RobotRose" parent="." index="7"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0, -23)
-
-[node name="ExitBluey" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -13)
-
-[node name="ExitRose" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -23)
 
 [node name="TestingFloorBack" type="StaticBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
@@ -122,6 +122,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -23)
 
 [node name="PressurePlate4" parent="." index="21" instance=ExtResource("5_vvoq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -23)
+
+[node name="RobotRose" parent="." index="22"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0, -23)
+
+[node name="ExitBluey" parent="." index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -13)
+
+[node name="ExitRose" parent="." index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -23)
 
 [connection signal="activated" from="PressurePlate" to="Gate" method="_open_gate"]
 [connection signal="deactivated" from="PressurePlate" to="Gate" method="_close_gate"]

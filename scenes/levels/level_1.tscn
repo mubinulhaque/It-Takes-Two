@@ -12,14 +12,8 @@ size = Vector3(20, 1, 20)
 [node name="Level1" instance=ExtResource("1_014kd")]
 _next_level = "uid://c1luwso30d7qg"
 
-[node name="RobotBluey" parent="." index="6"]
+[node name="RobotBluey" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
-
-[node name="RobotRose" parent="." index="7"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -13)
-
-[node name="ExitBluey" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -24)
 
 [node name="TestingFloor" type="StaticBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
@@ -31,3 +25,9 @@ mesh = SubResource("PlaneMesh_014kd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloor" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_014kd")
+
+[node name="RobotRose" parent="." index="12"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -13)
+
+[node name="ExitBluey" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -24)

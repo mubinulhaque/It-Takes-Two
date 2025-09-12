@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=37 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_58o6h"]
 [ext_resource type="Script" uid="uid://dcc7rp13n77la" path="res://scripts/level.gd" id="2_8n3nq"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://bmvtsahif08j" path="res://scripts/robot.gd" id="4_8n3nq"]
 [ext_resource type="Material" uid="uid://dm3nx4lbqv2wd" path="res://materials/bluey.tres" id="5_8rhjg"]
 [ext_resource type="Script" uid="uid://d0ca1qbqufaet" path="res://scripts/void.gd" id="5_40ga3"]
+[ext_resource type="Material" uid="uid://nqcsi4sw0568" path="res://materials/grey_tile.tres" id="6_dq8h5"]
 [ext_resource type="Material" uid="uid://8evmslx18foy" path="res://materials/rose.tres" id="6_krm4r"]
+[ext_resource type="Material" uid="uid://c1a7dkmwp0ion" path="res://materials/white_tile.tres" id="6_w06h8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
 size = Vector2(5, 5)
@@ -41,6 +43,13 @@ size = Vector2(1.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xbjy"]
 size = Vector3(1.5, 0.1, 0.4)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_imdmy"]
+material = ExtResource("6_w06h8")
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w06h8"]
+size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7p6o"]
 size = Vector3(30, 3, 30)
@@ -198,7 +207,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 1, -0.5)
 text = "Level 1"
 
-[node name="Void" type="Area3D" parent="." index="5"]
+[node name="BackWall" type="StaticBody3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 10, -30)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BackWall" index="0"]
+material_override = ExtResource("6_dq8h5")
+mesh = SubResource("PlaneMesh_imdmy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_w06h8")
+
+[node name="LeftWall" type="StaticBody3D" parent="." index="6"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -10, 10, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWall" index="0"]
+material_override = ExtResource("6_dq8h5")
+mesh = SubResource("PlaneMesh_imdmy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_w06h8")
+
+[node name="RightWall" type="StaticBody3D" parent="." index="7"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 10, 10, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RightWall" index="0"]
+material_override = ExtResource("6_dq8h5")
+mesh = SubResource("PlaneMesh_imdmy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_w06h8")
+
+[node name="Ceiling" type="StaticBody3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 20, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling" index="0"]
+material_override = ExtResource("6_dq8h5")
+mesh = SubResource("PlaneMesh_imdmy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_w06h8")
+
+[node name="Void" type="Area3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -22)
 collision_layer = 0
 collision_mask = 224
@@ -208,7 +261,7 @@ script = ExtResource("5_40ga3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Void" index="0"]
 shape = SubResource("BoxShape3D_g7p6o")
 
-[node name="RobotBluey" type="CharacterBody3D" parent="." index="6"]
+[node name="RobotBluey" type="CharacterBody3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 collision_layer = 33
 script = ExtResource("4_8n3nq")
@@ -235,7 +288,7 @@ shape = SubResource("SphereShape3D_pa8r4")
 [node name="GrabTransform" type="RemoteTransform3D" parent="RobotBluey/GrabArea" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
-[node name="RobotRose" type="CharacterBody3D" parent="." index="7"]
+[node name="RobotRose" type="CharacterBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -20)
 collision_layer = 65
 script = ExtResource("4_8n3nq")
@@ -268,7 +321,7 @@ shape = SubResource("SphereShape3D_15mv3")
 [node name="GrabTransform" type="RemoteTransform3D" parent="RobotRose/GrabArea" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
-[node name="ExitBluey" type="Area3D" parent="." index="8"]
+[node name="ExitBluey" type="Area3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
 collision_layer = 0
 collision_mask = 32
@@ -282,7 +335,7 @@ mesh = SubResource("SphereMesh_ct2u3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("CylinderShape3D_plsol")
 
-[node name="ExitRose" type="Area3D" parent="." index="9"]
+[node name="ExitRose" type="Area3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -24)
 collision_layer = 0
 collision_mask = 64
@@ -296,7 +349,7 @@ mesh = SubResource("PlaneMesh_8ag0e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_kj5lu")
 
-[node name="FinishTimer" type="Timer" parent="." index="10"]
+[node name="FinishTimer" type="Timer" parent="." index="14"]
 one_shot = true
 
 [connection signal="pressed" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
