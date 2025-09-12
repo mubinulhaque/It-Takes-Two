@@ -15,7 +15,6 @@
 sky_material = SubResource("ProceduralSkyMaterial_j5pbu")
 
 [sub_resource type="Environment" id="Environment_ubaj6"]
-background_mode = 2
 sky = SubResource("Sky_cgih3")
 
 [node name="SceneBase" instance=ExtResource("1_ic3hb")]
