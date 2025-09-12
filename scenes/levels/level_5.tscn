@@ -1,24 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://db7w5qx26t07i"]
+[gd_scene load_steps=8 format=3 uid="uid://db7w5qx26t07i"]
 
 [ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_fi56y"]
 [ext_resource type="Material" uid="uid://c1a7dkmwp0ion" path="res://materials/white_tile.tres" id="2_fsnos"]
 [ext_resource type="PackedScene" uid="uid://cfmo3t7iyyi63" path="res://scenes/crate.tscn" id="2_hldbq"]
-[ext_resource type="Script" uid="uid://dypyjr0tgggu3" path="res://scripts/gate.gd" id="3_fsnos"]
-[ext_resource type="Material" uid="uid://ds3rln8usdf2v" path="res://materials/gate.tres" id="4_mxx4w"]
 [ext_resource type="PackedScene" uid="uid://b4yaexktgsmhr" path="res://scenes/pressure_plate.tscn" id="5_vvoq0"]
+[ext_resource type="PackedScene" uid="uid://bk7bam6hijqgp" path="res://scenes/gate.tscn" id="7_fsnos"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_v11pw"]
 size = Vector2(16, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymdsp"]
 size = Vector3(16, 1, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mqeuu"]
-material = ExtResource("4_mxx4w")
-size = Vector3(2, 0.1, 0.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vfe1l"]
-size = Vector3(2, 2, 1)
 
 [node name="LevelGateDance" instance=ExtResource("1_fi56y")]
 _next_level = "uid://be0swhq4ngjn8"
@@ -63,80 +55,44 @@ shape = SubResource("BoxShape3D_ymdsp")
 [node name="Crate" parent="." index="13" instance=ExtResource("2_hldbq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -23)
 
-[node name="Gate" type="StaticBody3D" parent="." index="14"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, -13)
-script = ExtResource("3_fsnos")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gate" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_mqeuu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_vfe1l")
-
-[node name="Gate2" type="StaticBody3D" parent="." index="15"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -13)
-script = ExtResource("3_fsnos")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gate2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_mqeuu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate2" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_vfe1l")
-
-[node name="Gate3" type="StaticBody3D" parent="." index="16"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, -13)
-script = ExtResource("3_fsnos")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gate3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_mqeuu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate3" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_vfe1l")
-
-[node name="Gate4" type="StaticBody3D" parent="." index="17"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -13)
-script = ExtResource("3_fsnos")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gate4" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_mqeuu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate4" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_vfe1l")
-
-[node name="PressurePlate" parent="." index="18" instance=ExtResource("5_vvoq0")]
+[node name="PressurePlate" parent="." index="14" instance=ExtResource("5_vvoq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -23)
 
-[node name="PressurePlate2" parent="." index="19" instance=ExtResource("5_vvoq0")]
+[node name="PressurePlate2" parent="." index="15" instance=ExtResource("5_vvoq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -23)
 
-[node name="PressurePlate3" parent="." index="20" instance=ExtResource("5_vvoq0")]
+[node name="PressurePlate3" parent="." index="16" instance=ExtResource("5_vvoq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -23)
 
-[node name="PressurePlate4" parent="." index="21" instance=ExtResource("5_vvoq0")]
+[node name="PressurePlate4" parent="." index="17" instance=ExtResource("5_vvoq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -23)
 
-[node name="RobotRose" parent="." index="22"]
+[node name="RobotRose" parent="." index="18"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0, -23)
 
-[node name="ExitBluey" parent="." index="23"]
+[node name="ExitBluey" parent="." index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -13)
 
-[node name="ExitRose" parent="." index="24"]
+[node name="ExitRose" parent="." index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -23)
 
-[connection signal="activated" from="PressurePlate" to="Gate" method="_open_gate"]
-[connection signal="deactivated" from="PressurePlate" to="Gate" method="_close_gate"]
-[connection signal="activated" from="PressurePlate2" to="Gate2" method="_open_gate"]
-[connection signal="deactivated" from="PressurePlate2" to="Gate2" method="_close_gate"]
-[connection signal="activated" from="PressurePlate3" to="Gate3" method="_open_gate"]
-[connection signal="deactivated" from="PressurePlate3" to="Gate3" method="_close_gate"]
-[connection signal="activated" from="PressurePlate4" to="Gate4" method="_open_gate"]
-[connection signal="deactivated" from="PressurePlate4" to="Gate4" method="_close_gate"]
+[node name="GateLeft" parent="." index="22" instance=ExtResource("7_fsnos")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, -13)
+
+[node name="GateMiddleLeft" parent="." index="23" instance=ExtResource("7_fsnos")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -13)
+
+[node name="GateMiddleRight" parent="." index="24" instance=ExtResource("7_fsnos")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, -13)
+
+[node name="GateRight" parent="." index="25" instance=ExtResource("7_fsnos")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -13)
+
+[connection signal="activated" from="PressurePlate" to="GateLeft" method="_open_gate"]
+[connection signal="deactivated" from="PressurePlate" to="GateLeft" method="_close_gate"]
+[connection signal="activated" from="PressurePlate2" to="GateMiddleLeft" method="_open_gate"]
+[connection signal="deactivated" from="PressurePlate2" to="GateMiddleLeft" method="_close_gate"]
+[connection signal="activated" from="PressurePlate3" to="GateMiddleRight" method="_open_gate"]
+[connection signal="deactivated" from="PressurePlate3" to="GateMiddleRight" method="_close_gate"]
+[connection signal="activated" from="PressurePlate4" to="GateRight" method="_open_gate"]
+[connection signal="deactivated" from="PressurePlate4" to="GateRight" method="_close_gate"]

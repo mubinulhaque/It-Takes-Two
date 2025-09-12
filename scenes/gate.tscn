@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk7bam6hijqgp"]
+
+[ext_resource type="Script" uid="uid://dypyjr0tgggu3" path="res://scripts/gate.gd" id="1_xwxio"]
+[ext_resource type="Material" uid="uid://ds3rln8usdf2v" path="res://materials/gate.tres" id="2_hudsw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ra442"]
+material = ExtResource("2_hudsw")
+size = Vector3(2, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ra442"]
+size = Vector3(2, 2, 1)
+
+[node name="Gate" type="StaticBody3D"]
+script = ExtResource("1_xwxio")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_ra442")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_ra442")
