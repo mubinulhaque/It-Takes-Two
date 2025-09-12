@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvxbt3ewtd148"]
+[gd_scene load_steps=5 format=3 uid="uid://cvxbt3ewtd148"]
 
 [ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_014kd"]
+[ext_resource type="Material" uid="uid://c1a7dkmwp0ion" path="res://materials/white_tile.tres" id="2_6iamk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
 size = Vector2(20, 20)
@@ -24,6 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -24)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloor" index="0"]
+material_override = ExtResource("2_6iamk")
 mesh = SubResource("PlaneMesh_014kd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloor" index="1"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://be0swhq4ngjn8"]
+[gd_scene load_steps=11 format=3 uid="uid://be0swhq4ngjn8"]
 
 [ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_i0fhw"]
 [ext_resource type="PackedScene" uid="uid://cfmo3t7iyyi63" path="res://scenes/crate.tscn" id="2_5wshb"]
+[ext_resource type="Material" uid="uid://c1a7dkmwp0ion" path="res://materials/white_tile.tres" id="2_7x7cx"]
 [ext_resource type="Script" uid="uid://dypyjr0tgggu3" path="res://scripts/gate.gd" id="3_7x7cx"]
 [ext_resource type="Material" uid="uid://ds3rln8usdf2v" path="res://materials/gate.tres" id="4_b6i88"]
 [ext_resource type="PackedScene" uid="uid://b4yaexktgsmhr" path="res://scenes/pressure_plate.tscn" id="5_e18e5"]
@@ -41,6 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -23)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloorBack" index="0"]
+material_override = ExtResource("2_7x7cx")
 mesh = SubResource("PlaneMesh_v11pw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloorBack" index="1"]
@@ -51,6 +53,7 @@ shape = SubResource("BoxShape3D_ymdsp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloorFront" index="0"]
+material_override = ExtResource("2_7x7cx")
 mesh = SubResource("PlaneMesh_v11pw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloorFront" index="1"]
