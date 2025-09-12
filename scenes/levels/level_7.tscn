@@ -24,6 +24,7 @@ material = ExtResource("6_hq5i0")
 size = Vector2(1, 1)
 
 [node name="LevelBoxSharing" instance=ExtResource("1_ntash")]
+_next_level = "uid://c6qirs2nrv25x"
 
 [node name="LevelLabel" parent="Console" index="4"]
 text = "Level 7"

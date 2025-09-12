@@ -1,0 +1,221 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6qirs2nrv25x"]
+
+[ext_resource type="PackedScene" uid="uid://be4gkw7f52rht" path="res://scenes/levels/level_base.tscn" id="1_aq65u"]
+[ext_resource type="Material" uid="uid://c1a7dkmwp0ion" path="res://materials/white_tile.tres" id="2_irbrv"]
+[ext_resource type="Material" uid="uid://nqcsi4sw0568" path="res://materials/grey_tile.tres" id="3_805pq"]
+[ext_resource type="PackedScene" uid="uid://cfmo3t7iyyi63" path="res://scenes/crate.tscn" id="4_ki8mi"]
+[ext_resource type="PackedScene" uid="uid://b4yaexktgsmhr" path="res://scenes/pressure_plate.tscn" id="5_u61dc"]
+[ext_resource type="PackedScene" uid="uid://bk7bam6hijqgp" path="res://scenes/gate.tscn" id="6_7snfr"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_805pq"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ki8mi"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_irbrv"]
+material = ExtResource("3_805pq")
+size = Vector3(9, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_805pq"]
+size = Vector3(9, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7snfr"]
+size = Vector3(6, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7snfr"]
+size = Vector3(6, 1, 1)
+
+[node name="Level8" instance=ExtResource("1_aq65u")]
+
+[node name="LevelLabel" parent="Console" index="4"]
+text = "Level 8"
+
+[node name="MeshInstance3D" parent="LeftWall" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007258415, 0.02158165, -0.0015087128)
+
+[node name="RobotBluey" parent="." index="10"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9, 0, -11)
+
+[node name="RobotRose" parent="." index="11"]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 9, 0, -29)
+
+[node name="ExitBluey" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -21)
+
+[node name="ExitRose" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -11)
+
+[node name="TestingFloor" type="StaticBody3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestingFloor" index="0"]
+material_override = ExtResource("2_irbrv")
+mesh = SubResource("PlaneMesh_805pq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestingFloor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ki8mi")
+
+[node name="MazeWall1" type="StaticBody3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -12.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall1" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall1" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall2" type="StaticBody3D" parent="." index="17"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 0.5, -17.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall2" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall2" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall3" type="StaticBody3D" parent="." index="18"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.5, 0.5, -14.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall3" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall3" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall4" type="StaticBody3D" parent="." index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, -27.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall4" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall4" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall14" type="StaticBody3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, -24.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall14" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall14" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall5" type="StaticBody3D" parent="." index="21"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.5, 0.5, -19.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall5" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall5" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall6" type="StaticBody3D" parent="." index="22"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 0.5, -29.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall6" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall6" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall7" type="StaticBody3D" parent="." index="23"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 0.5, -29.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall7" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_irbrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall7" index="1"]
+shape = SubResource("BoxShape3D_805pq")
+
+[node name="MazeWall8" type="StaticBody3D" parent="." index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -12.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall8" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_7snfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall8" index="1"]
+shape = SubResource("BoxShape3D_7snfr")
+
+[node name="MazeWall9" type="StaticBody3D" parent="." index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -22.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall9" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_7snfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall9" index="1"]
+shape = SubResource("BoxShape3D_7snfr")
+
+[node name="MazeWall10" type="StaticBody3D" parent="." index="26"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.5, 0.5, -19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall10" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_7snfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall10" index="1"]
+shape = SubResource("BoxShape3D_7snfr")
+
+[node name="MazeWall11" type="StaticBody3D" parent="." index="27"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.5, 0.5, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall11" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_7snfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall11" index="1"]
+shape = SubResource("BoxShape3D_7snfr")
+
+[node name="MazeWall12" type="StaticBody3D" parent="." index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -27.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall12" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_7snfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall12" index="1"]
+shape = SubResource("BoxShape3D_7snfr")
+
+[node name="MazeWall13" type="StaticBody3D" parent="." index="29"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 0.5, -22)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MazeWall13" index="0"]
+material_override = ExtResource("3_805pq")
+mesh = SubResource("BoxMesh_7snfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MazeWall13" index="1"]
+shape = SubResource("BoxShape3D_7snfr")
+
+[node name="CrateLeft" parent="." index="30" instance=ExtResource("4_ki8mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -29)
+
+[node name="CrateRight" parent="." index="31" instance=ExtResource("4_ki8mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -26)
+
+[node name="PlateLeft" parent="." index="32" instance=ExtResource("5_u61dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21)
+
+[node name="PlateRight" parent="." index="33" instance=ExtResource("5_u61dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -23)
+
+[node name="GateLeft" parent="." index="34" instance=ExtResource("6_7snfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -19)
+
+[node name="GateRight" parent="." index="35" instance=ExtResource("6_7snfr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 0, -11)
+
+[connection signal="activated" from="PlateLeft" to="GateRight" method="_open_gate"]
+[connection signal="deactivated" from="PlateLeft" to="GateRight" method="_close_gate"]
+[connection signal="activated" from="PlateRight" to="GateLeft" method="_open_gate"]
+[connection signal="deactivated" from="PlateRight" to="GateLeft" method="_close_gate"]

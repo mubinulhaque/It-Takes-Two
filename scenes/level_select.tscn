@@ -61,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.05, 0, 0)
 _level = "uid://djvcmyohywgcy"
 
 [node name="ButtonLevel5" parent="Console" index="7" instance=ExtResource("2_p0wlc")]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0.09994922, 0, 0)
 _level = "uid://db7w5qx26t07i"
 
 [node name="ButtonLevel6" parent="Console" index="8" instance=ExtResource("2_p0wlc")]
@@ -72,6 +72,10 @@ _level = "uid://be0swhq4ngjn8"
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.4, 0, 0)
 _level = "uid://be0swhq4ngjn8"
 
+[node name="ButtonLevel8" parent="Console" index="10" instance=ExtResource("2_p0wlc")]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0.55, 0, 0)
+_level = "uid://c6qirs2nrv25x"
+
 [connection signal="pressed" from="Console/ButtonLevel1" to="." method="load_scene"]
 [connection signal="pressed" from="Console/ButtonLevel2" to="." method="load_scene"]
 [connection signal="pressed" from="Console/ButtonLevel3" to="." method="load_scene"]
@@ -79,3 +83,4 @@ _level = "uid://be0swhq4ngjn8"
 [connection signal="pressed" from="Console/ButtonLevel5" to="." method="load_scene"]
 [connection signal="pressed" from="Console/ButtonLevel6" to="." method="load_scene"]
 [connection signal="pressed" from="Console/ButtonLevel7" to="." method="load_scene"]
+[connection signal="pressed" from="Console/ButtonLevel8" to="." method="load_scene"]
