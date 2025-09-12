@@ -34,6 +34,9 @@ text = "Level 8"
 [node name="MeshInstance3D" parent="LeftWall" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007258415, 0.02158165, -0.0015087128)
 
+[node name="Void" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -16)
+
 [node name="RobotBluey" parent="." index="10"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9, 0, -11)
 
