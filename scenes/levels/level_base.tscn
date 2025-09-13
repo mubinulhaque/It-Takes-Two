@@ -165,7 +165,7 @@ mesh = SubResource("PlaneMesh_ynct0")
 shape = SubResource("BoxShape3D_ynct0")
 
 [node name="Console" type="StaticBody3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261827, 0, 0.42261827, 0.90630776, 0, 8, 1.5)
+transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261827, 0, 0.42261827, 0.90630776, 0, 8, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Console" index="0"]
 mesh = SubResource("PlaneMesh_rus8k")
