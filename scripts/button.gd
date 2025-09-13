@@ -6,6 +6,7 @@ signal released ## Emitted when the button is released
 @export var _image: Texture2D ## Image to display on top of the button
 @export var _scale := 0.2
 
+@onready var _audio_player: AudioStreamPlayer3D = $StaticBody3D/AudioStreamPlayer3D
 @onready var _sprite: Sprite3D = $StaticBody3D/Sprite3D
 
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 func _on_interactable_area_button_pressed(_button: Variant) -> void:
 	pressed.emit()
+	_audio_player.play()
 
 
 func _on_interactable_area_button_released(_button: Variant) -> void:
