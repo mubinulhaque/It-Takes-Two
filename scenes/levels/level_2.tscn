@@ -27,11 +27,11 @@ _next_level = "uid://df68esmtjutn4"
 [node name="LevelLabel" parent="Console" index="4"]
 text = "Level 2"
 
-[node name="MeshInstance3D" parent="LeftWall" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="LeftWall" parent="." index="6"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -9, 10, -20)
 
-[node name="MeshInstance3D" parent="RightWall" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="RightWall" parent="." index="7"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 9, 10, -20)
 
 [node name="RobotBluey" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -12)
