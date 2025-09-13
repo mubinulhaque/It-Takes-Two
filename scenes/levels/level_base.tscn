@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=45 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_58o6h"]
 [ext_resource type="Script" uid="uid://dcc7rp13n77la" path="res://scripts/level.gd" id="2_8n3nq"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bjriuqc7suseu" path="res://textures/hand.png" id="9_3iy5o"]
 [ext_resource type="AudioStream" uid="uid://bougcfulvrnus" path="res://audio/exit_enter.ogg" id="17_p3ew5"]
 [ext_resource type="AudioStream" uid="uid://idqmowxf27x0" path="res://audio/exit_leave.ogg" id="18_x2afm"]
+[ext_resource type="AudioStream" uid="uid://dpqnkorhjmgdl" path="res://audio/success.ogg" id="19_1vve2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_014kd"]
 size = Vector2(5, 5)
@@ -383,6 +384,13 @@ stream = ExtResource("18_x2afm")
 [node name="FinishTimer" type="Timer" parent="." index="14"]
 one_shot = true
 
+[node name="SuccessPlayer" type="AudioStreamPlayer" parent="." index="15"]
+stream = ExtResource("19_1vve2")
+
+[node name="SuccessTimer" type="Timer" parent="." index="16"]
+wait_time = 0.4
+one_shot = true
+
 [connection signal="pressed" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_pressed"]
 [connection signal="released" from="Console/BlueyControls/ForwardButton" to="RobotBluey" method="_on_forward_button_released"]
 [connection signal="pressed" from="Console/BlueyControls/BackButton" to="RobotBluey" method="_on_forward_button_released"]
@@ -416,3 +424,4 @@ one_shot = true
 [connection signal="body_exited" from="ExitRose" to="." method="robot_unfinished"]
 [connection signal="body_exited" from="ExitRose" to="ExitRose/LeaveAudioPlayer" method="play" unbinds=1]
 [connection signal="timeout" from="FinishTimer" to="." method="_on_finish_timer_timeout"]
+[connection signal="timeout" from="SuccessTimer" to="." method="_on_success_timer_timeout"]

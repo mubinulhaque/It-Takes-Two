@@ -8,6 +8,8 @@ extends XRToolsSceneBase
 var finished_robots := 0
 
 @onready var _finish_timer: Timer = $FinishTimer
+@onready var _success_player: AudioStreamPlayer = $SuccessPlayer
+@onready var _success_timer: Timer = $SuccessTimer
 
 
 ## When a robot enter their exit
@@ -17,7 +19,7 @@ func robot_finished(body: Node3D) -> void:
 	
 	if finished_robots >= 2:
 		# If both robots have reached the finish line
-		print("Woohoo!")
+		_success_timer.start()
 		_finish_timer.start()
 
 
@@ -36,3 +38,7 @@ func _on_finish_timer_timeout() -> void:
 	else:
 		# If the next level has not been defined
 		push_error("Error: the next level has not been defined!")
+
+
+func _on_success_timer_timeout() -> void:
+	_success_player.play()
