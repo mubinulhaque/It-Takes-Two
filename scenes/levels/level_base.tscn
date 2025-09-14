@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=46 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_58o6h"]
 [ext_resource type="Script" uid="uid://dcc7rp13n77la" path="res://scripts/level.gd" id="2_8n3nq"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bp3fbxg852cow" path="res://textures/arrow_left.png" id="7_p3ew5"]
 [ext_resource type="Texture2D" uid="uid://gd48x4m37ein" path="res://textures/arrow_right.png" id="8_x2afm"]
 [ext_resource type="Texture2D" uid="uid://bjriuqc7suseu" path="res://textures/hand.png" id="9_3iy5o"]
+[ext_resource type="PackedScene" uid="uid://bth2p7i70j475" path="res://scenes/level_button.tscn" id="11_bbft6"]
 [ext_resource type="AudioStream" uid="uid://bougcfulvrnus" path="res://audio/exit_enter.ogg" id="17_p3ew5"]
 [ext_resource type="AudioStream" uid="uid://idqmowxf27x0" path="res://audio/exit_leave.ogg" id="18_x2afm"]
 [ext_resource type="AudioStream" uid="uid://dpqnkorhjmgdl" path="res://audio/success.ogg" id="19_1vve2"]
@@ -226,6 +227,11 @@ _scale = 0.01
 [node name="LevelLabel" type="Label3D" parent="Console" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 1, -0.5)
 text = "Level 1"
+
+[node name="SelectButton" parent="Console" index="5" instance=ExtResource("11_bbft6")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.7, 0, -0.2)
+_level = "uid://cq6w1n3hhcche"
+_index = 0
 
 [node name="BackWall" type="StaticBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 10, -30)
