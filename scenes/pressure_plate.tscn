@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://b20fv40w3prys" path="res://materials/pressure_plate.tres" id="2_r34r6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ra442"]
+resource_local_to_scene = true
 material = ExtResource("2_r34r6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fiq81"]

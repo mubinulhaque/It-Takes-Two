@@ -5,6 +5,8 @@ signal deactivated ## Emitted when the pressure plate is no longer weighed down
 
 const _DEFAULT_MASK := 0b0000_0000_0000_0000_0000_0000_1000_0000
 
+var _material: StandardMaterial3D
+
 
 func _ready() -> void:
 	# Set the collision mask correctly on startup
@@ -13,13 +15,18 @@ func _ready() -> void:
 	# Connect the signals on startup
 	body_entered.connect(_on_grabbable_entered)
 	body_exited.connect(_on_grabbable_exited)
+	
+	# Get the albedo of the plate's material
+	_material = $MeshInstance3D.mesh.surface_get_material(0)
 
 
 # When a Grabbable is placed on the pressure plate
 func _on_grabbable_entered(_body: Node3D):
 	activated.emit()
+	_material.albedo_color = Color.GREEN
 
 
 # When a Grabbable is taken off the pressure plate
 func _on_grabbable_exited(_body: Node3D):
 	deactivated.emit()
+	_material.albedo_color = Color.WHITE
