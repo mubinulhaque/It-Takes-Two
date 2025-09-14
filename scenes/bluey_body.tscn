@@ -1,33 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://bonl8a0avpck2"]
+[gd_scene load_steps=13 format=3 uid="uid://boes6r7kdhbq"]
 
-[ext_resource type="Material" uid="uid://8evmslx18foy" path="res://materials/rose.tres" id="1_f5hla"]
-[ext_resource type="Script" uid="uid://bf0wjv8kfyrt0" path="res://scripts/robot_body.gd" id="1_o7354"]
-[ext_resource type="Material" uid="uid://by7r2hw304s0b" path="res://materials/rose_hover.tres" id="2_hmdpr"]
+[ext_resource type="Script" uid="uid://bf0wjv8kfyrt0" path="res://scripts/robot_body.gd" id="1_7n0vq"]
+[ext_resource type="Material" uid="uid://dm3nx4lbqv2wd" path="res://materials/bluey.tres" id="1_js5dj"]
+[ext_resource type="Material" uid="uid://dq0iv5punu4lv" path="res://materials/bluey_hover.tres" id="2_yb4ui"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_hmdpr"]
-material = ExtResource("1_f5hla")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0qsy7"]
+material = ExtResource("1_js5dj")
+height = 1.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_o7354"]
-size = Vector3(0.25, 0.24, 0.25)
+[sub_resource type="SphereMesh" id="SphereMesh_js5dj"]
+material = ExtResource("1_js5dj")
 
-[sub_resource type="BoxMesh" id="BoxMesh_hniqq"]
-material = ExtResource("1_f5hla")
-size = Vector3(0.75, 0.75, 0.75)
+[sub_resource type="SphereMesh" id="SphereMesh_yb4ui"]
+radius = 0.1
+height = 0.2
 
-[sub_resource type="BoxMesh" id="BoxMesh_1o1x6"]
-size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_f5hla"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[sub_resource type="SphereMesh" id="SphereMesh_f5hla"]
+[sub_resource type="SphereMesh" id="SphereMesh_7n0vq"]
+material = ExtResource("2_yb4ui")
 height = 0.001
 
-[sub_resource type="SphereMesh" id="SphereMesh_o7354"]
+[sub_resource type="SphereMesh" id="SphereMesh_wprjx"]
+material = ExtResource("2_yb4ui")
 radius = 0.75
 height = 0.001
 
-[sub_resource type="SphereMesh" id="SphereMesh_hniqq"]
+[sub_resource type="SphereMesh" id="SphereMesh_inbf8"]
 radius = 1.0
 height = 0.001
 
@@ -117,54 +114,35 @@ _data = {
 &"hovering": SubResource("Animation_hmdpr")
 }
 
-[node name="RoseMesh" type="Node3D"]
-script = ExtResource("1_o7354")
+[node name="BlueyMesh" type="Node3D"]
+script = ExtResource("1_7n0vq")
 
 [node name="Body" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_hmdpr")
-
-[node name="Neck" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
-mesh = SubResource("BoxMesh_o7354")
+mesh = SubResource("CapsuleMesh_0qsy7")
 
 [node name="Head" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-mesh = SubResource("BoxMesh_hniqq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_js5dj")
 
-[node name="LeftEar" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.427, 0, 0)
-mesh = SubResource("BoxMesh_1o1x6")
-skeleton = NodePath("../..")
+[node name="LeftEye" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, -0.45)
+mesh = SubResource("SphereMesh_yb4ui")
 
-[node name="RightEar" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.427, 0, 0)
-mesh = SubResource("BoxMesh_1o1x6")
-skeleton = NodePath("../..")
-
-[node name="LeftEye" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, -0.47499526)
-mesh = SubResource("BoxMesh_f5hla")
-skeleton = NodePath("../..")
-
-[node name="RightEye" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, -0.475)
-mesh = SubResource("BoxMesh_f5hla")
-skeleton = NodePath("../..")
+[node name="RightEye" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, -0.45)
+mesh = SubResource("SphereMesh_yb4ui")
 
 [node name="HoverCircleHigh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
-material_override = ExtResource("2_hmdpr")
-mesh = SubResource("SphereMesh_f5hla")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+mesh = SubResource("SphereMesh_7n0vq")
 
 [node name="HoverCircleMiddle" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
-material_override = ExtResource("2_hmdpr")
-mesh = SubResource("SphereMesh_o7354")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("SphereMesh_wprjx")
 
 [node name="HoverCircleLow" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-material_override = ExtResource("2_hmdpr")
-mesh = SubResource("SphereMesh_hniqq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+mesh = SubResource("SphereMesh_inbf8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
