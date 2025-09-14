@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://be4gkw7f52rht"]
+[gd_scene load_steps=45 format=3 uid="uid://be4gkw7f52rht"]
 
 [ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_58o6h"]
 [ext_resource type="Script" uid="uid://dcc7rp13n77la" path="res://scripts/level.gd" id="2_8n3nq"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://gd48x4m37ein" path="res://textures/arrow_right.png" id="8_x2afm"]
 [ext_resource type="Texture2D" uid="uid://bjriuqc7suseu" path="res://textures/hand.png" id="9_3iy5o"]
 [ext_resource type="PackedScene" uid="uid://bth2p7i70j475" path="res://scenes/level_button.tscn" id="11_bbft6"]
+[ext_resource type="PackedScene" uid="uid://bonl8a0avpck2" path="res://scenes/rose_body.tscn" id="17_ioey5"]
 [ext_resource type="AudioStream" uid="uid://bougcfulvrnus" path="res://audio/exit_enter.ogg" id="17_p3ew5"]
 [ext_resource type="AudioStream" uid="uid://idqmowxf27x0" path="res://audio/exit_leave.ogg" id="18_x2afm"]
 [ext_resource type="AudioStream" uid="uid://dpqnkorhjmgdl" path="res://audio/success.ogg" id="19_1vve2"]
@@ -75,13 +76,6 @@ height = 0.4
 [sub_resource type="SphereShape3D" id="SphereShape3D_pa8r4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4nkto"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fcfvj"]
-material = ExtResource("6_krm4r")
-size = Vector3(1, 2, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pa8r4"]
-size = Vector3(0.75, 0.25, 0.25)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_15mv3"]
 
@@ -329,15 +323,7 @@ grab = "grab"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_4nkto")
 
-[node name="Body" type="MeshInstance3D" parent="RobotRose" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_fcfvj")
-
-[node name="Eyes" type="MeshInstance3D" parent="RobotRose/Body" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.625)
-mesh = SubResource("BoxMesh_pa8r4")
-
-[node name="GrabArea" type="Area3D" parent="RobotRose" index="2"]
+[node name="GrabArea" type="Area3D" parent="RobotRose" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 monitorable = false
 
@@ -346,6 +332,9 @@ shape = SubResource("SphereShape3D_15mv3")
 
 [node name="GrabTransform" type="RemoteTransform3D" parent="RobotRose/GrabArea" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="RoseMesh" parent="RobotRose" index="2" instance=ExtResource("17_ioey5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
 [node name="ExitBluey" type="Area3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
