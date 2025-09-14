@@ -86,7 +86,7 @@ _index = 6
 
 [node name="ButtonLevel7" parent="Console" index="9" instance=ExtResource("2_p0wlc")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.4, 0, 0)
-_level = "uid://be0swhq4ngjn8"
+_level = "uid://censoavichko4"
 _index = 7
 
 [node name="ButtonLevel8" parent="Console" index="10" instance=ExtResource("2_p0wlc")]
