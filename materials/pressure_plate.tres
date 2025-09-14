@@ -1,3 +1,7 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://b20fv40w3prys"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b20fv40w3prys"]
+
+[ext_resource type="Texture2D" uid="uid://djhe5jh1k7fgg" path="res://textures/pressure_plate.png" id="1_4ywtr"]
 
 [resource]
+albedo_texture = ExtResource("1_4ywtr")
+texture_filter = 0
