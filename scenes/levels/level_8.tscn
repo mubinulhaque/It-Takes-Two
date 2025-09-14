@@ -27,6 +27,7 @@ size = Vector3(6, 1, 1)
 size = Vector3(6, 1, 1)
 
 [node name="Level8" instance=ExtResource("1_aq65u")]
+_next_level = "uid://bmxhhdxeipfil"
 
 [node name="LevelLabel" parent="Console" index="4"]
 text = "Level 8"

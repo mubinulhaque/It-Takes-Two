@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmxhhdxeipfil"]
+
+[ext_resource type="PackedScene" uid="uid://d1ddd5slevhx3" path="res://scenes/scene_base.tscn" id="1_0iwpd"]
+[ext_resource type="Material" uid="uid://bvi7ye7tsm3eh" path="res://materials/black_diamond.tres" id="3_twxug"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rif6e"]
+size = Vector2(5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chg43"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r77uv"]
+size = Vector2(5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nqmc"]
+size = Vector3(5, 0.1, 5)
+
+[node name="LevelBase" instance=ExtResource("1_0iwpd")]
+
+[node name="XROrigin3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 3)
+
+[node name="Floor" type="StaticBody3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" index="0"]
+material_override = ExtResource("3_twxug")
+mesh = SubResource("PlaneMesh_rif6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_chg43")
+
+[node name="Ceiling" type="StaticBody3D" parent="Floor" index="2"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/Ceiling" index="0"]
+mesh = SubResource("PlaneMesh_r77uv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Ceiling" index="1"]
+shape = SubResource("BoxShape3D_4nqmc")
+
+[node name="BackWall" type="StaticBody3D" parent="Floor" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.5, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/BackWall" index="0"]
+mesh = SubResource("PlaneMesh_r77uv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/BackWall" index="1"]
+shape = SubResource("BoxShape3D_4nqmc")
+
+[node name="FrontWall" type="StaticBody3D" parent="Floor" index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.5, -2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/FrontWall" index="0"]
+mesh = SubResource("PlaneMesh_r77uv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/FrontWall" index="1"]
+shape = SubResource("BoxShape3D_4nqmc")
+
+[node name="Label3D" type="Label3D" parent="Floor/FrontWall" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.01, 0)
+text = "Thanks for playing!
+
+Credits:
+Sounds - Kenney
+Textures - Kenney & Mubinul Haque
+Hand Icon - sbed"
+
+[node name="LeftWall" type="StaticBody3D" parent="Floor" index="5"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -2.5, 2.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/LeftWall" index="0"]
+mesh = SubResource("PlaneMesh_r77uv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/LeftWall" index="1"]
+shape = SubResource("BoxShape3D_4nqmc")
+
+[node name="RightWall" type="StaticBody3D" parent="Floor" index="6"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 2.5, 2.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/RightWall" index="0"]
+mesh = SubResource("PlaneMesh_r77uv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/RightWall" index="1"]
+shape = SubResource("BoxShape3D_4nqmc")
