@@ -1,4 +1,7 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://c08mxv8a38cx8"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c08mxv8a38cx8"]
+
+[ext_resource type="Texture2D" uid="uid://bgl1phnsoccmj" path="res://textures/crate.png" id="1_d1x0d"]
 
 [resource]
-albedo_color = Color(0.5876136, 0.21745318, 7.2196126e-06, 1)
+albedo_texture = ExtResource("1_d1x0d")
+texture_filter = 0

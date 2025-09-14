@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://2dqlcmawpa81"]
+
+[ext_resource type="PackedScene" uid="uid://dky7y6ikjjgre" path="res://models/crate.glb" id="1_3h1js"]
+[ext_resource type="Material" uid="uid://c08mxv8a38cx8" path="res://materials/crate.tres" id="2_f8ycn"]
+
+[node name="CrateMesh" instance=ExtResource("1_3h1js")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_f8ycn")
