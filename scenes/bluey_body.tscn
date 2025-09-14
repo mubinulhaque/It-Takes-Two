@@ -25,6 +25,7 @@ radius = 0.75
 height = 0.001
 
 [sub_resource type="SphereMesh" id="SphereMesh_inbf8"]
+material = ExtResource("2_yb4ui")
 radius = 1.0
 height = 0.001
 
